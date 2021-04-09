@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React - List & Keys</title>
+        
+        <script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="../js/react.min.js"></script>
+        <script src="../js/react-dom.min.js"></script>
+        <script src="../js/browser.min.js"></script>
+
+        <style>
+            * {
+                font-family: sans-serif;
+                margin: 0;
+            }
+            button {
+                height: 40px;
+                width: 200px;
+            }
+        </style>
+        
+
+    </head>
+    <body>
+        <div id="root">
+            <!-- This element's contents will be replaced with your component. -->
+        </div>
+
+        <script type="text/babel">
+            /*
+                Keys Must Only Be Unique Among Siblings.
+
+                Keys used within arrays should be unique among their siblings. 
+                However they don’t need to be globally unique. 
+                We can use the same keys when we produce two different arrays:                              
+            */
+
+            function Blog(props) {
+                const sidebar = ( 
+                    <ul>
+                        {props.posts.map((post) =>
+                            <li key={post.id}> 
+                                {post.title}
+                            </li>
+                        )}
+                    </ul>
+                 );
+                const content = props.posts.map((post) =>
+                    <div key={post.id}>
+                        <h3>{post.title}</h3>
+                        <p>{post.content}</p>
+                    </div>
+                );
+                return (
+                    <div>
+                        {sidebar}
+                        <hr />
+                        {content}
+                    </div>
+                );
+            }
+
+            const posts = [
+                {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
+                {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+            ];
+
+            ReactDOM.render(
+            <Blog posts={posts} />,
+            document.getElementById('root')
+            );          
+
+        </script>         
+    </body>
+</html>

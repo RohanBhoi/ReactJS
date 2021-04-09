@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React - List & Keys</title>
+        <script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="../js/react.min.js"></script>
+        <script src="../js/react-dom.min.js"></script>
+        <script src="../js/browser.min.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <!-- This element's contents will be replaced with your component. -->
+        </div>
+        
+        <script type="text/babel">
+
+            /*
+                We can refactor the previous example i.e. demo-01 into a component that accepts an array of numbers 
+                and outputs a list of elements.
+            */
+            function NumberList(props) {
+                const numbers = props.numbers;
+                const listItems = numbers.map((number) =>
+                    <li key={number.toString()}>
+                        {number}
+                    </li>
+                );
+
+                return(
+                    <ul> {listItems} </ul>
+                )
+            }
+
+            const numbers = [0, 1, 2, 3, 4, 5];
+
+            ReactDOM.render(
+            <NumberList numbers ={numbers} />,
+            document.getElementById('root')
+            );          
+
+        </script>
+         
+    </body>
+</html>
