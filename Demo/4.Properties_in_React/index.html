@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React - Props</title>
+        <script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="../js/react.min.js"></script>
+        <script src="../js/react-dom.min.js"></script>
+        <script src="../js/browser.min.js"></script>
+    </head>
+    <body>
+
+        <!-- Properties allows you to customize your components -->
+
+        <div id="example"></div>
+
+        <script type="text/babel">            
+           
+           class Movie extends React.Component{
+                render(){
+                    return(
+                        <div> 
+                            <h1>Movie name: {this.props.name}</h1>
+                            <h2>Genre: {this.props.genre}</h2>
+                        </div>
+                    );
+                }
+            };
+            
+            ReactDOM.render( 
+                <div>
+                    <Movie name="Gladiator" genre="Action" />
+                    <Movie name="Goodfellas" genre="Drama,Gangsters" />
+                </div>, document.getElementById("example") 
+            );
+        </script>
+    </body>
+</html>
