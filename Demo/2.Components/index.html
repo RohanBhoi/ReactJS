@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React - Components</title>
+        <script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="../js/react.min.js"></script>
+        <script src="../js/react-dom.min.js"></script>
+        <script src="../js/browser.min.js"></script>
+        <style>
+            .heading {
+                color: purple;
+            }
+        </style>    
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            
+            /* React.createClass() is the method which is used to create a component */
+            var Bacon = React.createClass({
+                render: function() {
+                    return(<h3> This is the component </h3>);
+                }
+            }); 
+           
+            ReactDOM.render( <Bacon />, document.getElementById("root") );
+        </script>
+    </body>
+</html>
