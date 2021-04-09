@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React - Handling Events</title>
+        <script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="../js/react.min.js"></script>
+        <script src="../js/react-dom.min.js"></script>
+        <script src="../js/browser.min.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <!-- This element's contents will be replaced with your component. -->
+        </div>
+
+        <script type="text/babel">
+            class Toggle extends React.Component{
+                // Define State in the constructor
+                constructor(props){
+                    super(props);
+                    this.state = {isToggleOn: true};
+
+                    // This binding is necessary to make `this` work in the callback 
+                    this.handleClick = this.handleClick.bind(this);
+                }
+
+                handleClick(){
+                    this.setState(state => ({
+                        isToggleOn: !state.isToggleOn
+                    }));
+                }
+
+                render(){
+                    return(
+                        <button onClick={this.handleClick}>
+                            {this.state.isToggleOn ? 'ON' : 'OFF'}
+                        </button>
+                    );
+                }
+            }
+            ReactDOM.render(
+                <Toggle />,
+                document.getElementById('root')
+            );            
+
+        </script>
+         
+    </body>
+</html>
